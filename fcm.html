@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Community 19/02/2021</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+</head>
+<body>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+  <script>
+    let x, y
+    let xspeed, yspeed
+    let r, g, b
+
+    function setup() {
+      createCanvas(window.innerWidth, window.innerHeight)
+      x = random(width)
+      y = random(height)
+      xspeed = 5
+      yspeed = 5
+      pickColor()
+    }
+
+    function pickColor() {
+      r = random(50, 256)
+      g = random(50, 256)
+      b = random(50, 256)
+    }
+
+    function draw() {
+      background(0)
+      textSize(36);
+      textFont('monospace')
+      fill(r,g,b)
+      text('frontend', x, y, 80, 60)
+      text('community', x, y + 30, 80, 60)
+
+      x = x + xspeed
+      y = y + yspeed
+
+      if (x + 190 >= width) {
+        xspeed = -xspeed
+        x = width - 190
+        pickColor()
+      } else if (x <= 0) {
+        xspeed = -xspeed
+        x = 0
+        pickColor()
+      }
+
+    if (y + 60 >= height) {
+        yspeed = -yspeed
+        y = height - 60
+      pickColor()
+      } else if (y <= 0) {
+        yspeed = -yspeed
+        y = 0
+        pickColor()
+      }
+    }
+  </script>
+</body>
+</html>
